@@ -1,0 +1,47 @@
+header {
+  margin: 6rem auto;
+}
+
+.navbar {
+  margin: 0 auto;
+}
+
+.pokemon-section {
+  margin: 0 auto;
+  padding: 6rem;
+}
+
+#pokemonGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(2rem, 9vw, 10rem);
+}
+
+@media (max-width: 87.5rem) {
+  #pokemonGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 59.25rem) {
+  #pokemonGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 40.625rem) {
+  #pokemonGrid {
+    grid-template-columns: 1fr;
+    gap: 6rem;
+  }
+
+  .pokemon-section {
+    padding: 6rem;
+  }
+}
+
+@media (max-width: 25rem) {
+  .pokemon-section {
+    padding: 2rem;
+  }
+}

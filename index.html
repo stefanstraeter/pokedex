@@ -19,9 +19,34 @@
     ></script>
 
     <link rel="stylesheet" href="./styles/reset.css" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./styles/variables.css" />
+    <link rel="stylesheet" href="./styles/fonts.css" />
+    <link rel="stylesheet" href="./styles/layout.css" />
+    <link rel="stylesheet" href="./styles/components.css" />
+    <link rel="stylesheet" href="./base.css" />
 
+    <script src="./scripts/templates.js"></script>
     <script src="./script.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="container-fluid d-flex flex-column">
+          <h1 class="navbar__headline mb-4">PokeDex</h1>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search a Pokémon" aria-label="Search" />
+            <button class="btn submit-btn" type="submit">Submit!</button>
+            <button id="resetBtn" class="btn submit-btn ms-2" type="button">Reset</button>
+          </form>
+        </div>
+      </nav>
+    </header>
+
+    <section class="max-width pokemon-section">
+      <div id="pokemonGrid" class=""></div>
+      <div class="text-center mt-4">
+        <button id="loadMoreBtn" class="btn load-more-btn btn-lg">Load More</button>
+      </div>
+    </section>
+  </body>
 </html>

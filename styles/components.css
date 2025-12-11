@@ -1,0 +1,170 @@
+/* === Navbar Header=== */
+.navbar__headline {
+  font-family: var(--font-headlines);
+  font-weight: var(--font-weight-900);
+  font-style: italic;
+  font-size: clamp(3.6rem, 3.21vw + 1.837rem, 8rem);
+  text-transform: uppercase;
+  color: var(--White);
+}
+
+.form-control {
+  font-size: 1.4rem;
+}
+
+/* === Card === */
+.pokemon-card {
+  position: relative;
+  overflow: visible;
+  border-radius: 2rem;
+  padding: 9rem 0 1rem 1rem;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.pokemon-card:hover {
+  box-shadow: 0 2px 14px rgba(183, 183, 183, 0.776);
+}
+
+.pokemon-card__img {
+  height: 16rem;
+  position: absolute;
+  top: -6rem;
+  right: -4rem;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 40.625rem) {
+  .pokemon-card__img {
+    max-height: 12rem;
+    top: -4rem;
+    right: 0;
+  }
+}
+
+.pokemon-card:hover .pokemon-card__img {
+  transform: scale(1.08);
+}
+
+.pokemon-card__name {
+  font-size: clamp(1.8rem, 0.599vw + 1.65rem, 2.8rem);
+  font-weight: var(--font-weight-900);
+  text-align: left;
+  text-transform: capitalize;
+}
+
+.pokemon-card__id {
+  color: var(--Slate-500);
+  font-style: italic;
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-700);
+}
+
+.pokemon-card__types span {
+  display: inline-block;
+  margin: 0.4rem 0.4rem 1rem 0;
+  padding: 0.3rem 0.6rem;
+  border-radius: 1.2rem;
+  background-color: var(--White);
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  color: var(--Slate-500);
+  font-size: 1rem;
+}
+
+.pokemon-card.normal {
+  background: #d8d8b8;
+}
+.pokemon-card.fire {
+  background: #f6b48c;
+}
+.pokemon-card.water {
+  background: #9fc4f5;
+}
+.pokemon-card.electric {
+  background: #fae38a;
+}
+.pokemon-card.grass {
+  background: #a9e3a6;
+}
+.pokemon-card.ice {
+  background: #c9f0f0;
+}
+.pokemon-card.fighting {
+  background: #e6a09a;
+}
+.pokemon-card.poison {
+  background: #d8a6d8;
+}
+.pokemon-card.ground {
+  background: #e9d9a8;
+}
+.pokemon-card.flying {
+  background: #c8b8f2;
+}
+.pokemon-card.psychic {
+  background: #f7a7be;
+}
+.pokemon-card.bug {
+  background: #d2de8a;
+}
+.pokemon-card.rock {
+  background: #d2c6a3;
+}
+.pokemon-card.ghost {
+  background: #b8a6d8;
+}
+.pokemon-card.dragon {
+  background: #b6a4f6;
+}
+.pokemon-card.dark {
+  background: #b3a8a0;
+}
+.pokemon-card.steel {
+  background: #d6d6e4;
+}
+.pokemon-card.fairy {
+  background: #f6c7d4;
+}
+
+/* === Buttons === */
+.btn.submit-btn {
+  background: transparent;
+  border: 1px solid var(--Slate-100);
+  color: var(--Slate-100);
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-900);
+}
+
+.btn.submit-btn:hover {
+  background: var(--Slate-100);
+  color: var(--Slate-500);
+}
+
+.btn.submit-btn:active {
+  background: var(--Orange);
+  color: var(--White);
+  transform: scale(0.95);
+}
+
+.btn.load-more-btn {
+  background: transparent;
+  border: 1px solid var(--Slate-100);
+  color: var(--Slate-100);
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-900);
+}
+
+.btn.load-more-btn:hover {
+  background: var(--Slate-100);
+  color: var(--Slate-500);
+}
+
+#loadMoreBtn {
+  margin-top: 3rem;
+}
+
+/* === Modal === */

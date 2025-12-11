@@ -1,0 +1,17 @@
+html {
+  font-family: var(--font-body);
+  font-size: 62.5%; /* 16px * 0.625 = 10px */
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.4rem;
+  background-color: var(--Slate-500);
+  margin: 0;
+  padding: 0;
+}
+
+.max-width {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+}
