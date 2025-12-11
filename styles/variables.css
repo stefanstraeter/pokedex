@@ -1,0 +1,29 @@
+:root {
+  /* Colors */
+  --White: #ffffff;
+  --Slate-100: #ece7e0;
+  --Slate-200: #d1d1d1;
+  --Slate-300: #948c8c;
+  --Slate-500: #292929;
+  --Orange: #ce884b;
+
+  /* Typography */
+  --font-body: "Zalando Sans Expanded", sans-serif;
+  --font-headlines: "Zalando Sans Expanded", sans-serif;
+
+  /* Font Weights */
+  --font-weight-300: 300;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
+  --font-weight-900: 900;
+
+  /* Font Style */
+  --font-style-normal: normal;
+  --font-style-italic: italic;
+
+  /* Layout */
+  --max-content-width: 192rem;
+}
