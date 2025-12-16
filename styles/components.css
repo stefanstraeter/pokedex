@@ -3,13 +3,14 @@
   font-family: var(--font-headlines);
   font-weight: var(--font-weight-900);
   font-style: italic;
-  font-size: clamp(3.6rem, 3.21vw + 1.837rem, 8rem);
+  font-size: clamp(3rem, 3.21vw + 1.837rem, 8rem);
   text-transform: uppercase;
   color: var(--White);
 }
 
-.form-control {
-  font-size: 1.4rem;
+.navbar__input {
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 /* === Card === */
@@ -18,7 +19,6 @@
   overflow: visible;
   border-radius: 2rem;
   padding: 9rem 0 1rem 1rem;
-
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
@@ -38,7 +38,7 @@
 
 @media (max-width: 40.625rem) {
   .pokemon-card__img {
-    max-height: 12rem;
+    max-height: 14rem;
     top: -4rem;
     right: 0;
   }
@@ -131,21 +131,24 @@
 }
 
 /* === Buttons === */
-.btn.submit-btn {
+.navbar__button--submit,
+.navbar__button--reset {
   background: transparent;
   border: 1px solid var(--Slate-100);
   color: var(--Slate-100);
   font-size: 1.4rem;
   font-weight: var(--font-weight-900);
+  white-space: nowrap;
 }
 
-.btn.submit-btn:hover {
+.navbar__button--submit:hover,
+.navbar__button--reset:hover {
   background: var(--Slate-100);
   color: var(--Slate-500);
 }
 
-.btn.submit-btn:active {
-  background: var(--Orange);
+.navbar__button--submit:active,
+.navbar__button--reset:active {
   color: var(--White);
   transform: scale(0.95);
 }
@@ -166,5 +169,3 @@
 #loadMoreBtn {
   margin-top: 3rem;
 }
-
-/* === Modal === */
