@@ -76,6 +76,6 @@ Pokedex is an interactive Pokémon encyclopedia built with **HTML, CSS, and Vani
 
 ## Author
 
-- GitHub: [@USERNAME](https://github.com/stefanstraeter/)
+- GitHub: [@stefanstraeter](https://github.com/stefanstraeter/)
 
 # pokedex
