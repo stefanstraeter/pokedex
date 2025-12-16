@@ -152,6 +152,11 @@
     align-items: center;
   }
 
+  .modal__image {
+    max-height: 18rem;
+    flex-shrink: 0;
+  }
+
   .modal__panel {
     border-left: none;
     border-top: 1px solid #ffffff33;
