@@ -17,6 +17,10 @@ header {
   gap: clamp(2rem, 9vw, 10rem);
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 @media (max-width: 87.5rem) {
   #pokemonGrid {
     grid-template-columns: repeat(3, 1fr);
@@ -29,18 +33,12 @@ header {
   }
 }
 
-@media (max-width: 40.625rem) {
+@media (max-width: 35.937rem) {
   #pokemonGrid {
     grid-template-columns: 1fr;
     gap: 6rem;
   }
 
-  .pokemon-section {
-    padding: 6rem;
-  }
-}
-
-@media (max-width: 25rem) {
   .pokemon-section {
     padding: 2rem;
   }
