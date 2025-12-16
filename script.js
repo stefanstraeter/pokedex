@@ -1,44 +1,24 @@
+const pokemonBadgeLimit = 16;
+const pokemonGrid = document.getElementById("pokemonGrid");
 let pokemonId = 1;
-
-async function fetchPokemon(id) {
-  try {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-
-    if (!response.ok) {
-      throw new Error("Sorry! Something went wrong.");
-    }
-
-    const data = await response.json();
-    const pokemonImg = data.sprites.other?.dream_world?.front_default || data.sprites.other?.["official-artwork"]?.front_default || data.sprites.front_default;
-
-    return {
-      id: data.id,
-      name: data.name,
-      image: pokemonImg,
-      types: data.types.map((type) => type.type.name),
-    };
-
-  } catch (error) {
-    console.error(error);
-  }
-}
 
 
 async function loadPokemonBatch() {
-  const loadLimitBadge = 16;
+  for (let batchIndex = 0; batchIndex < pokemonBadgeLimit; batchIndex++) {
+    const currentId = pokemonId + batchIndex;
 
-  for (let pokemonIndex = 0; pokemonIndex < loadLimitBadge; pokemonIndex++) {
-    const pokemon = await fetchPokemon(pokemonId);
+    try {
+      const pokemon = await fetchPokemon(currentId);
 
-    renderPokemonCard(pokemon);
-    pokemonId++;
+      if (pokemon) {
+        pokemonGrid.innerHTML += pokemonCardHtml(pokemon);
+      }
+
+    } catch (error) {
+      console.error(error);
+    }
   }
-}
-
-
-function renderPokemonCard(pokemon) {
-  const pokemonGrid = document.getElementById("pokemonGrid");
-  pokemonGrid.innerHTML += pokemonCardHtml(pokemon);
+  pokemonId += pokemonBadgeLimit;
 }
 
 
@@ -51,21 +31,26 @@ async function searchPokemon(userInput) {
       return;
     }
 
-    document.getElementById("pokemonGrid").innerHTML = "";
-    renderPokemonCard(pokemon);
+    if (pokemonGrid) {
+      pokemonGrid.innerHTML = "";
+      renderPokemonCard(pokemon);
+    }
 
   } catch (error) {
     showNotFoundMessage();
-    console.error(error);
+    console.error("Sorry, somthiung went wrong:", error);
   }
 }
 
 
-function showNotFoundMessage() {
-  const grid = document.getElementById("pokemonGrid");
-  grid.innerHTML = showNotFoundMessageHtml();
+function renderPokemonCard(pokemon) {
+  pokemonGrid.innerHTML += pokemonCardHtml(pokemon);
 }
 
+
+function showNotFoundMessage() {
+  pokemonGrid.innerHTML = showNotFoundMessageHtml();
+}
 
 
 document.querySelector("form").addEventListener("submit", function (event) {
@@ -82,8 +67,9 @@ document.querySelector("form").addEventListener("submit", function (event) {
 document.getElementById("resetBtn").addEventListener("click", () => {
   console.clear();
 
-  const pokemonGrid = document.getElementById("pokemonGrid");
-  pokemonGrid.innerHTML = "";
+  if (pokemonGrid) {
+    pokemonGrid.innerHTML = "";
+  }
 
   pokemonId = 1;
 
@@ -94,26 +80,16 @@ document.getElementById("resetBtn").addEventListener("click", () => {
 });
 
 
+document.addEventListener("click", (event) => {
+  const card = event.target.closest(".pokemon-card");
+  if (!card) return;
+  openPokemonModal(card.dataset.id);
+});
+
+
 document.getElementById("loadMoreBtn").addEventListener("click", () => {
   loadPokemonBatch();
 });
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  loadPokemonBatch()
-});
-
-
-
-/*
-document.addEventListener("click", (clickEvent) => {
-  const pokemonCard = clickEvent.target.closest(".pokemon-card");
-  if (!pokemonCard) return;
-
-  const pokemonId = pokemonCard.dataset.id;
-  if (!pokemonId) return;
-
-  openPokemonModal(pokemonId);
-});
-
-*/
+loadPokemonBatch();
