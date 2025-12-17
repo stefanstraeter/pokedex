@@ -105,7 +105,6 @@
   flex: 1;
   border-left: 1px solid #ffffff33;
   padding-left: 2rem;
-  overflow-y: auto;
 }
 
 /* === Modal Tab Content === */
@@ -163,5 +162,13 @@
     padding-left: 0;
     padding-top: 1.5rem;
     width: 100%;
+  }
+
+  .modal__tab {
+    padding: 0.3rem 1.6rem;
+  }
+
+  .modal__subtitle {
+    font-size: 1.4rem;
   }
 }
