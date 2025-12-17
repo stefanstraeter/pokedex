@@ -7,7 +7,7 @@ Pokedex is an interactive Pokémon encyclopedia built with **HTML, CSS, and Vani
 ### The Challenge
 
 - Dynamically fetch and display Pokémon from the **PokéAPI**
-- Implement search functionality for Pokémon by name or ID
+- Implement live search functionality for Pokémon by name or ID
 - Display Pokémon details (types, abilities, stats, size/weight) in a modal
 - Implement **load more** functionality to progressively show Pokémon
 - Create a **responsive and visually appealing** layout
@@ -44,11 +44,11 @@ Pokedex is an interactive Pokémon encyclopedia built with **HTML, CSS, and Vani
 - `fetchPokemon()` retrieves basic data, `fetchPokemonFullDetails()` fetches detailed stats
 - `pokemonCardHtml()` and `pokemonModalHtml()` generate dynamic HTML for cards and modals
 
-#### Search & Reset
+#### Live Search Functionality
 
-- Users can search Pokémon by **name or ID**
-- Reset button restores the full Pokémon list
-- `searchPokemon()` and `loadPokemonBatch()` handle dynamic content updates
+- `filterAllPokemon(userInput)` dynamically updates the grid while the user types
+- Avoids unnecessary API calls for previously loaded Pokémon
+- Smooth user experience with instant feedback
 
 #### Modal Details
 
@@ -77,5 +77,3 @@ Pokedex is an interactive Pokémon encyclopedia built with **HTML, CSS, and Vani
 ## Author
 
 - GitHub: [@stefanstraeter](https://github.com/stefanstraeter/)
-
-# pokedex
