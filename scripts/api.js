@@ -1,3 +1,6 @@
+let allPokemonList = [];
+
+
 async function fetchPokemon(id) {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -50,4 +53,20 @@ async function fetchPokemonFullDetails(id) {
         console.error(error);
         return null;
     }
+}
+
+
+async function fetchAllPokemonNames() {
+    if (allPokemonList.length)
+        return allPokemonList;
+
+    const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1010");
+    const data = await response.json();
+
+    allPokemonList = data.results.map((pokemon, index) => ({
+        id: index + 1,
+        name: pokemon.name
+    }));
+
+    return allPokemonList;
 }
