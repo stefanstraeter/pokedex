@@ -1,6 +1,8 @@
 const pokemonBadgeLimit = 16;
 const pokemonGrid = document.getElementById("pokemonGrid");
 const searchInput = document.querySelector("form input");
+const loadMoreBtn = document.getElementById("loadMoreBtn");
+
 let loadedPokemon = [];
 let pokemonId = 1;
 
@@ -29,24 +31,26 @@ async function filterAllPokemon(userInput) {
   pokemonGrid.innerHTML = "";
 
   if (!userInput) {
-    loadedPokemon.forEach(pokemon => pokemonGrid.innerHTML += pokemonCardHtml(pokemon));
+    loadMoreBtn.style.display = "";
+    loadedPokemon.forEach(pokemon => renderPokemonCard(pokemon));
     return;
   }
 
-  const allPokemon = await fetchAllPokemonNames();
+  loadMoreBtn.style.display = "none";
+  const allNames = await fetchAllPokemonNames();
 
-  const filtered = allPokemon
-    .filter(pokemon => pokemon.name.startsWith(userInput))
-    .slice(0, 10);
+  const filtered = allNames
+    .filter(pokemon => pokemon.name.toLowerCase().startsWith(userInput)).slice(0, 10);
 
-  if (!filtered.length)
+  if (filtered.length === 0) {
     return showNotFoundMessage();
+  }
 
   for (const pokemon of filtered) {
-    const allPokemonData = await fetchPokemon(pokemon.id);
+    const filteredPokemon = await fetchPokemon(pokemon.id);
 
-    if (!allPokemonData) continue;
-    pokemonGrid.innerHTML += pokemonCardHtml(allPokemonData);
+    if (searchInput.value === "") return;
+    if (filteredPokemon) renderPokemonCard(filteredPokemon);
   }
 }
 
@@ -69,6 +73,8 @@ document.getElementById("resetBtn").addEventListener("click", () => {
   }
 
   pokemonId = 1;
+
+  loadMoreBtn.style.display = "";
 
   const userInput = document.querySelector("form input");
   if (userInput) userInput.value = "";
