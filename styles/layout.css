@@ -36,7 +36,7 @@ body.modal-open {
 @media (max-width: 35.937rem) {
   #pokemonGrid {
     grid-template-columns: 1fr;
-    gap: 6rem;
+    gap: 4rem;
   }
 
   .pokemon-section {
