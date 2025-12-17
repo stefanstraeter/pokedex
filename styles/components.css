@@ -131,7 +131,6 @@
 }
 
 /* === Buttons === */
-.navbar__button--submit,
 .navbar__button--reset {
   background: transparent;
   border: 1px solid var(--Slate-100);
@@ -141,13 +140,11 @@
   white-space: nowrap;
 }
 
-.navbar__button--submit:hover,
 .navbar__button--reset:hover {
   background: var(--Slate-100);
   color: var(--Slate-500);
 }
 
-.navbar__button--submit:active,
 .navbar__button--reset:active {
   color: var(--White);
   transform: scale(0.95);
