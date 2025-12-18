@@ -1,68 +1,69 @@
 const pokemonModal = document.getElementById("pokemonModal");
 
 
-function capitalize(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-
-function createListHtml(items, callback) {
-    return items.map(callback).join("");
-}
-
-
 async function openPokemonModal(id) {
-    await updatePokemonContent(id);
-
-    pokemonModal.classList.remove("hidden");
-    document.body.classList.add("modal-open");
-}
-
-
-async function updatePokemonContent(id) {
     const data = await fetchPokemonFullDetails(id);
 
-    const abilitiesHtml = createListHtml(data.abilities, abilitie =>
-        `<li>${capitalize(abilitie)}</li>`);
+    pokemonModal.innerHTML = pokemonModalHtml(data);
 
-    const statsHtml = createListHtml(data.stats, stat =>
-        `<li>${capitalize(stat.name)}: ${stat.value}</li>`);
+    if (data.id <= 1) {
+        const prevBtn = document.getElementById("prevPokemonBtn");
+        if (prevBtn) prevBtn.disabled = true;
+    }
 
-    const typesHtml = createListHtml(data.types, type =>
-        `<div class="pokemon-type type-${type}">${capitalize(type)}</div>`);
+    if (!pokemonModal.open) {
+        pokemonModal.showModal();
+    }
+}
 
-    pokemonModal.innerHTML = pokemonModalHtml(data, typesHtml, abilitiesHtml, statsHtml, data.id, data.id === 1);
+
+function switchTab(tabName, clickedElement) {
+    document.querySelectorAll(".modal__tab-content").forEach(content => {
+        content.classList.remove("modal__tab-content--active");
+    });
+
+    document.querySelectorAll(".modal__tab").forEach(tab => {
+        tab.classList.remove("modal__tab--active");
+    });
+
+    const targetId = "tab" + capitalize(tabName);
+    const targetContent = document.getElementById(targetId);
+
+    if (targetContent) {
+        targetContent.classList.add("modal__tab-content--active");
+    }
+
+    clickedElement.classList.add("modal__tab--active");
 }
 
 
 pokemonModal.addEventListener("click", (event) => {
-    if (event.target.id === "closeModalBtn")
-        return closeModal();
-
-    const navBtn = event.target.closest(".modal__nav-btn");
-    if (navBtn && !navBtn.disabled) {
-        const targetId = parseInt(navBtn.dataset.id);
-        if (!isNaN(targetId) && targetId >= 1) updatePokemonContent(targetId);
+    if (event.target === pokemonModal) {
+        pokemonModal.close();
     }
-
-    const tab = event.target.closest(".modal__tab");
-    if (tab) switchTab(tab.dataset.tab, tab);
-
-    if (event.target === pokemonModal) closeModal();
 });
 
 
-function switchTab(tabName, clickedTab) {
-    document.querySelectorAll(".modal__tab").forEach(tab => tab.classList.remove("modal__tab--active"));
-    document.querySelectorAll(".modal__tab-content").forEach(content => content.classList.remove("modal__tab-content--active"));
-
-    clickedTab.classList.add("modal__tab--active");
-    document.getElementById(`tab${capitalize(tabName)}`).classList.add("modal__tab-content--active");
+function renderTypesForTemplate(types) {
+    return types.map(type =>
+        `<div class="pokemon-type type-${type}">${capitalize(type)}</div>`
+    ).join("");
 }
 
+function renderAbilitiesForTemplate(abilities) {
+    return abilities.map(ability =>
+        `<li>${capitalize(ability)}</li>`
+    ).join("");
+}
 
-function closeModal() {
-    pokemonModal.classList.add("hidden");
-    pokemonModal.innerHTML = "";
-    document.body.classList.remove("modal-open");
+function renderStatsForTemplate(stats) {
+    return stats.map(stat => {
+        const cleanName = stat.name.replace("-", " ");
+        return `<li><span class="modal__label">${capitalize(cleanName)}:</span> ${stat.value}</li>`;
+    }).join("");
+}
+
+function capitalize(string) {
+    if (!string) return "";
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
