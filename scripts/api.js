@@ -4,20 +4,16 @@ let allPokemonList = [];
 async function fetchPokemon(id) {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-
         if (!response.ok) {
             throw new Error(`Failed to fetch Pokemon #${id}. Status ${response.status}.`);
         }
-
         const data = await response.json();
-
         return {
             id: data.id,
             name: data.name,
             image: data.sprites.other?.["official-artwork"]?.front_default || data.sprites.front_default,
             types: data.types.map(pokemonType => pokemonType.type.name),
         }
-
     } catch (error) {
         console.error(error);
         return null;
@@ -28,13 +24,10 @@ async function fetchPokemon(id) {
 async function fetchPokemonFullDetails(id) {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-
         if (!response.ok) {
             throw new Error(`Failed to fetch details of Pokemon #${id}. Status ${response.status}.`);
         }
-
         const data = await response.json();
-
         return {
             id: data.id,
             name: data.name,
@@ -48,7 +41,6 @@ async function fetchPokemonFullDetails(id) {
                 value: stats.base_stat
             }))
         }
-
     } catch (error) {
         console.error(error);
         return null;
@@ -59,14 +51,11 @@ async function fetchPokemonFullDetails(id) {
 async function fetchAllPokemonNames() {
     if (allPokemonList.length)
         return allPokemonList;
-
     const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1010");
     const data = await response.json();
-
     allPokemonList = data.results.map((pokemon, index) => ({
         id: index + 1,
         name: pokemon.name
     }));
-
     return allPokemonList;
 }

@@ -3,14 +3,11 @@ const pokemonModal = document.getElementById("pokemonModal");
 
 async function openPokemonModal(id) {
     const data = await fetchPokemonFullDetails(id);
-
     pokemonModal.innerHTML = pokemonModalHtml(data);
-
     if (data.id <= 1) {
         const prevBtn = document.getElementById("prevPokemonBtn");
         if (prevBtn) prevBtn.disabled = true;
     }
-
     if (!pokemonModal.open) {
         pokemonModal.showModal();
     }
@@ -21,18 +18,14 @@ function switchTab(tabName, clickedElement) {
     document.querySelectorAll(".modal__tab-content").forEach(content => {
         content.classList.remove("modal__tab-content--active");
     });
-
     document.querySelectorAll(".modal__tab").forEach(tab => {
         tab.classList.remove("modal__tab--active");
     });
-
     const targetId = "tab" + capitalize(tabName);
     const targetContent = document.getElementById(targetId);
-
     if (targetContent) {
         targetContent.classList.add("modal__tab-content--active");
     }
-
     clickedElement.classList.add("modal__tab--active");
 }
 
