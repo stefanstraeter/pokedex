@@ -11,6 +11,10 @@ body {
   padding: 0;
 }
 
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
 .max-width {
   max-width: var(--max-content-width);
   margin: 0 auto;
