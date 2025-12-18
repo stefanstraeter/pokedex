@@ -22,7 +22,7 @@ function showNotFoundMessageHtml() {
 
 function pokemonModalHtml(data, typesHtml, abilitiesHtml, statsHtml, currentId, isFirstPokemon) {
   return `
-    <div class="modal__content">
+    <dialog class="modal__content">
       <button id="closeModalBtn" class="modal__close">&times;</button>
       <div class="modal__header">
         <h2 class="modal__number">#${data.id}</h2>
@@ -76,7 +76,7 @@ function pokemonModalHtml(data, typesHtml, abilitiesHtml, statsHtml, currentId, 
         </div>
       </div>
     </div>
-  </div>
+  </dialog>
   `;
 }
 
