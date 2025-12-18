@@ -15,6 +15,7 @@ dialog:modal {
 dialog::backdrop {
   background-color: #292929b4;
   backdrop-filter: blur(2rem);
+  -webkit-backdrop-filter: blur(2px); /* for Safari */
 }
 
 /* === Modal Content === */
