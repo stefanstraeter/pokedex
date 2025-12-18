@@ -11,6 +11,10 @@
   z-index: 5000;
 }
 
+dialog {
+  border-color: var(--Slate-500);
+}
+
 .modal.hidden {
   display: none;
 }
