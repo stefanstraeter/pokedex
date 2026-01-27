@@ -18,10 +18,9 @@ Pokedex is an interactive Pokémon encyclopedia built with **HTML, CSS, and Vani
 - **Solution URL:** [GitHub Repository](https://github.com/stefanstraeter/pokedex)
 - **Live Site URL:** [Live Demo](https://stefanstraeter.github.io/pokedex/)
 
-### Screenshot
+### Mockup
 
-![Pokedex Screenshot](assets/img/Pokedex_1.png)
-![Pokedex Screenshot](assets/img/Pokedex_2.png)
+![Pokedex Screenshot](assets/img/pokedex_mockup.jpg)
 
 ---
 
