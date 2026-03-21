@@ -1,78 +1,68 @@
-# DEVELOPER AKADEMIE – POKEDEX
+# POKÉDEX – DYNAMIC POKÉMON ENCYCLOPEDIA
 
 ## Overview
 
-Pokedex is an interactive Pokémon encyclopedia built with **HTML, CSS, and Vanilla JavaScript**. Users can **browse, search, and explore Pokémon**, view their stats, types, abilities, and navigate through a **responsive, mobile-first interface**. The project fetches live data from the **PokéAPI** and dynamically renders Pokémon cards and a modal with detailed information.
+**Pokédex** is a high-performance, interactive encyclopedia built with **Vanilla JavaScript** that interfaces with the **RESTful PokéAPI**. It allows users to browse, search, and explore the Pokémon universe through a sleek, responsive interface. The project focuses on efficient asynchronous data fetching, dynamic DOM manipulation, and modular architecture.
 
-### The Challenge
+This project was developed as a technical milestone during my **Front-End Development training at Developer Akademie**, emphasizing API integration and advanced UI components like synchronized modals.
 
-- Dynamically fetch and display Pokémon from the **PokéAPI**
-- Implement live search functionality for Pokémon by name or ID
-- Display Pokémon details (types, abilities, stats, size/weight) in a modal
-- Implement **load more** functionality to progressively show Pokémon
-- Create a **responsive and visually appealing** layout
-- Use **vanilla JavaScript, CSS variables, and modular code** for maintainability
+### Preview
 
-### Links
+![Pokédex Mockup](assets/img/pokedex_mockup.jpg)
 
-- **Solution URL:** [GitHub Repository](https://github.com/stefanstraeter/pokedex)
-- **Live Site URL:** [Live Demo](https://stefanstraeter.github.io/pokedex/)
+### Live Demo
 
-### Mockup
-
-![Pokedex Screenshot](assets/img/pokedex_mockup.jpg)
+- **Link:** [View Live Project](https://stefanstraeter.github.io/pokedex/)
 
 ---
 
-## My Process
+## Technical Architecture
 
-### Built With
+The application is built with a modular mindset, separating the data-fetching layer from the UI logic and templating engine:
 
-- **HTML5** – semantic markup for structure
-- **CSS3** – Grid, Flexbox, CSS variables, responsive layout
-- **JavaScript (Vanilla)** – dynamic rendering, fetch API, modal interactions
-- **Mobile-First Workflow** – interface adapts seamlessly to all screen sizes
-- **Bootstrap 5** – base styles and responsive utilities
-- **Font Awesome** – icons for navigation and UI elements
+### Project Structure
 
-### Key Features & Techniques
+- **`scripts/api.js`**: The core data layer. It handles all asynchronous `fetch` requests to the PokéAPI, including error handling and data normalization.
+- **`scripts/templates.js`**: A dedicated UI-component library that generates semantic HTML strings for Pokémon cards and detailed views.
+- **`scripts/modal.js`**: Manages the complex state of the detail view, including navigation (Next/Prev) and backdrop interactions.
+- **`styles/`**: A highly modular CSS architecture, separating `variables.css` (design tokens), `layout.css`, and specific component styles.
 
-#### Dynamic Pokémon Rendering
+---
 
-- Pokémon cards are dynamically created from **API data**
-- `fetchPokemon()` retrieves basic data, `fetchPokemonFullDetails()` fetches detailed stats
-- `pokemonCardHtml()` and `pokemonModalHtml()` generate dynamic HTML for cards and modals
+## Key Features & Implementation
 
-#### Live Search Functionality
+### Asynchronous Data Management
 
-- `filterAllPokemon(userInput)` dynamically updates the grid while the user types
-- Avoids unnecessary API calls for previously loaded Pokémon
-- Smooth user experience with instant feedback
+The app utilizes modern **ES6+ async/await** patterns to fetch data from the PokéAPI. It implements a "Load More" strategy to optimize initial page load speeds and minimize memory consumption by only requesting detailed stats when needed.
 
-#### Modal Details
+### Real-Time Search & Filtering
 
-- Clicking a Pokémon card opens a **modal with detailed information**
-- Modal displays:
-  - **Types**
-  - **Abilities**
-  - **Stats**
-  - **Height & Weight**
-- Navigation buttons allow browsing the **previous and next Pokémon**
+- **Live-Filter**: A high-performance search algorithm that filters the currently loaded Pokémon in real-time as the user types.
+- **Efficient UI Updates**: The grid re-renders dynamically without full page reloads, providing a smooth, app-like experience.
 
-#### Responsive Design & Mobile-First Approach
+### Advanced Detail View (Modal System)
 
-- Grid layout adapts from **1 to 4 columns** depending on screen size
-- Modal layout adjusts for smaller screens
-- Smooth animations and hover effects enhance UX
+- **Multi-Stage Data Fetching**: While the main grid shows basic info, clicking a card triggers a secondary fetch for deep-dive stats (abilities, base stats, weight/height).
+- **Navigation Logic**: Users can cycle through Pokémon directly within the modal, requiring complex state tracking to sync the modal with the underlying data set.
 
-#### Modular & Maintainable Code
+### Responsive & Modular Design
 
-- **Separate JS modules** for API, templates, modal functionality
-- CSS organized by **variables, components, layout, modal**
-- Centralized fonts and color variables in `variables.css`
+- **CSS Variables**: Centralized color palettes based on Pokémon types, managed via `variables.css`.
+- **Mobile-First Layout**: A fluid grid system (using Flexbox and CSS Grid) that scales seamlessly from single-column mobile views to multi-column desktop layouts.
+- **Zalando Sans Typography**: Integration of custom web fonts for a premium, modern look.
+
+---
+
+## Getting Started
+
+1. **Clone the repository:** `git clone https://github.com/stefanstraeter/pokedex`
+2. **Launch:** Open `index.html` via a local server (e.g., VS Code Live Server) to allow for clean API requests.
+3. **Usage:** Scroll to load more Pokémon, use the search bar to find specific entries, and click any card to see detailed combat stats.
 
 ---
 
 ## Author
+
+**Stefan Straeter**
 
 - GitHub: [@stefanstraeter](https://github.com/stefanstraeter/)
