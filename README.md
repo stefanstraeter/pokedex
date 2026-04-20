@@ -1,63 +1,118 @@
-# POKÉDEX – DYNAMIC POKÉMON ENCYCLOPEDIA
+# POKÉDEX – Dynamic Pokémon Encyclopedia
 
-## Overview
+An interactive Pokédex built with Vanilla JavaScript and the PokéAPI.
 
-**Pokédex** is a high-performance, interactive encyclopedia built with **Vanilla JavaScript** that interfaces with the **RESTful PokéAPI**. It allows users to browse, search, and explore the Pokémon universe through a sleek, responsive interface. The project focuses on efficient asynchronous data fetching, dynamic DOM manipulation, and modular architecture.
+Browse, search, and explore Pokémon with a fast, responsive interface powered by asynchronous data loading and dynamic UI rendering.
 
-This project was developed as a technical milestone during my **Front-End Development training at Developer Akademie**, emphasizing API integration and advanced UI components like synchronized modals.
-
-### Preview
-
-![Pokédex Mockup](assets/img/pokedex_mockup.jpg)
-
-### Live Demo
-
-- **Link:** [View Live Project](https://stefanstraeter.github.io/pokedex/)
+🔗 **Live Demo:** https://stefanstraeter.github.io/pokedex/
 
 ---
 
-## Technical Architecture
+## Preview
 
-The application is built with a modular mindset, separating the data-fetching layer from the UI logic and templating engine:
-
-### Project Structure
-
-- **`scripts/api.js`**: The core data layer. It handles all asynchronous `fetch` requests to the PokéAPI, including error handling and data normalization.
-- **`scripts/templates.js`**: A dedicated UI-component library that generates semantic HTML strings for Pokémon cards and detailed views.
-- **`scripts/modal.js`**: Manages the complex state of the detail view, including navigation (Next/Prev) and backdrop interactions.
-- **`styles/`**: A highly modular CSS architecture, separating `variables.css` (design tokens), `layout.css`, and specific component styles.
+![Pokédex Preview](assets/img/pokedex_mockup.jpg)
 
 ---
 
-## Key Features & Implementation
+## Features
 
-### Asynchronous Data Management
+- Dynamic Pokémon loading via PokéAPI
+- Real-time search and filtering
+- “Load More” pagination for performance optimization
+- Detailed modal view with extended stats
+- Next/Previous navigation inside modal
+- Responsive design (mobile & desktop)
+- Type-based color system using CSS variables
 
-The app utilizes modern **ES6+ async/await** patterns to fetch data from the PokéAPI. It implements a "Load More" strategy to optimize initial page load speeds and minimize memory consumption by only requesting detailed stats when needed.
+---
 
-### Real-Time Search & Filtering
+## Purpose
 
-- **Live-Filter**: A high-performance search algorithm that filters the currently loaded Pokémon in real-time as the user types.
-- **Efficient UI Updates**: The grid re-renders dynamically without full page reloads, providing a smooth, app-like experience.
+This project was developed as part of a frontend training program at the Developer Akademie.
 
-### Advanced Detail View (Modal System)
+It demonstrates how to build a dynamic, API-driven web application using Vanilla JavaScript without relying on frontend frameworks.
 
-- **Multi-Stage Data Fetching**: While the main grid shows basic info, clicking a card triggers a secondary fetch for deep-dive stats (abilities, base stats, weight/height).
-- **Navigation Logic**: Users can cycle through Pokémon directly within the modal, requiring complex state tracking to sync the modal with the underlying data set.
+Focus areas include:
 
-### Responsive & Modular Design
-
-- **CSS Variables**: Centralized color palettes based on Pokémon types, managed via `variables.css`.
-- **Mobile-First Layout**: A fluid grid system (using Flexbox and CSS Grid) that scales seamlessly from single-column mobile views to multi-column desktop layouts.
-- **Zalando Sans Typography**: Integration of custom web fonts for a premium, modern look.
+- asynchronous data fetching with modern JavaScript (async/await)
+- separation of data layer and UI rendering
+- building reusable UI templates
+- managing UI state across dynamic components (modal system)
 
 ---
 
 ## Getting Started
 
-1. **Clone the repository:** `git clone https://github.com/stefanstraeter/pokedex`
-2. **Launch:** Open `index.html` via a local server (e.g., VS Code Live Server) to allow for clean API requests.
-3. **Usage:** Scroll to load more Pokémon, use the search bar to find specific entries, and click any card to see detailed combat stats.
+Clone the repository:
+
+```id="x91kpl"
+git clone https://github.com/stefanstraeter/pokedex
+cd pokedex
+```
+
+Run the project using a local development server (e.g. VS Code Live Server).
+
+---
+
+## Tech Stack
+
+- HTML5
+- CSS3 (Flexbox, Grid, CSS Variables)
+- Vanilla JavaScript (ES6+)
+- PokéAPI (REST API)
+
+---
+
+## Project Structure
+
+```id="m4z8qp"
+scripts/
+  api.js
+  templates.js
+  modal.js
+styles/
+```
+
+- **scripts/api.js** – Handles all API requests, error handling, and data processing
+- **scripts/templates.js** – Generates reusable UI components (cards, detail views)
+- **scripts/modal.js** – Controls modal logic, navigation, and state
+- **styles/** – Modular CSS structure (layout, variables, components)
+
+---
+
+## Architecture Highlights
+
+- **Separation of Concerns**
+  Clear split between data fetching, UI rendering, and interaction logic.
+
+- **Asynchronous Data Strategy**
+  Efficient loading using async/await and staged data fetching (list vs. detail view).
+
+- **Template-Based Rendering**
+  Reusable HTML generation for consistent and maintainable UI components.
+
+- **Dynamic UI Updates**
+  Real-time DOM updates without page reloads for a smooth user experience.
+
+---
+
+## Technical Challenges
+
+### API Data Handling
+
+Managing asynchronous requests, error states, and partial data loading while keeping the UI responsive.
+
+### Modal State Synchronization
+
+Keeping navigation (Next/Previous) in sync with dynamically loaded data.
+
+### Performance Optimization
+
+Reducing initial load time using incremental data loading (“Load More” pattern).
+
+### Real-Time Search
+
+Implementing efficient filtering without unnecessary re-renders or performance drops.
 
 ---
 
@@ -65,4 +120,4 @@ The app utilizes modern **ES6+ async/await** patterns to fetch data from the Pok
 
 **Stefan Straeter**
 
-- GitHub: [@stefanstraeter](https://github.com/stefanstraeter/)
+GitHub: https://github.com/stefanstraeter/
