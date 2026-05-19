@@ -1,6 +1,7 @@
 html {
   font-family: var(--font-body);
   font-size: 62.5%; /* 16px * 0.625 = 10px */
+  scrollbar-gutter: stable;
 }
 
 body {

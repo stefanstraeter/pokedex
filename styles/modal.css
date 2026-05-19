@@ -1,6 +1,6 @@
 /* === Dialog === */
 dialog {
-  background-color: var(--Slate-700);
+  background-color: var(--Slate-500);
   border-radius: 2rem;
   border: 0;
   width: 90%;
@@ -13,9 +13,9 @@ dialog:modal {
 }
 
 dialog::backdrop {
-  background-color: #72622a00;
-  backdrop-filter: blur(2rem);
-  -webkit-backdrop-filter: blur(2rem);
+  background-color: rgba(0, 0, 0, 0.579);
+  backdrop-filter: blur(0.3rem);
+  -webkit-backdrop-filter: blur(0.3rem);
 }
 
 /* === Modal Content === */
